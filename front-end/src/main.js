@@ -7,12 +7,22 @@ import ProductsPage from './pages/ProductsPage.vue';
 import ProductDetailPage from './pages/ProductDetailPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
 
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  // COPY AND PASTE YOUR FIREBASE CONFIG INFO HERE
+  apiKey: "AIzaSyCFeWM-RkzczaJLh8B520sxSHANKjTAVlQ",
+  authDomain: "vue-full-bf332.firebaseapp.com",
+  projectId: "vue-full-bf332",
+  storageBucket: "vue-full-bf332.appspot.com",
+  messagingSenderId: "32222510034",
+  appId: "1:32222510034:web:5f1681f81cc8ef4ae2660b"
 };
 
+// Initialize Firebase
 initializeApp(firebaseConfig);
 
 createApp(App)
@@ -27,7 +37,12 @@ createApp(App)
   }, {
     path: '/products/:productId',
     component: ProductDetailPage,
-  }, {
+  }, 
+  {
+    path: '/',
+    redirect: '/products',
+  },
+  {
     path: '/:pathMatch(.*)*',
     component: NotFoundPage,
   }]

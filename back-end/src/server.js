@@ -3,11 +3,11 @@ import { MongoClient } from 'mongodb';
 import path from 'path';
 
 async function start() {
-  const url = `mongodb+srv://fsv-server:Abc123@cluster0.vkql371.mongodb.net/?retryWrites=true&w=majority`
+  const url = `mongodb+srv://jo:jotheboss@cluster0.a0ubded.mongodb.net/?retryWrites=true&w=majority`
   const client = new MongoClient(url);
 
   await client.connect();
-  const db = client.db('fsv-db');
+  const db = client.db('test');
 
   const app = express();
   app.use(express.json());
@@ -38,6 +38,11 @@ async function start() {
   app.post('/api/users/:userId/cart', async (req, res) => {
     const userId = req.params.userId;
     const productId = req.body.id;
+
+    const existingUser = await db.collection('users').findOne({ id: userId });
+    if (!existingUser) {
+      await db.collection('users').insertOne({ id: userId, cartItems: [] });
+    } 
 
     await db.collection('users').updateOne({ id: userId }, {
       $addToSet: { cartItems: productId }
