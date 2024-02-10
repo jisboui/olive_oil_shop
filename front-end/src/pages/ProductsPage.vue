@@ -1,5 +1,5 @@
 <template>
-  <h1>Products</h1>
+  <h1>زيت زيتونة</h1>
   <ProductsList :products="products"/>
 </template>
 
