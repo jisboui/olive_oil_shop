@@ -1,6 +1,6 @@
 <template>
-  <h1>زيت زيتونة يسرح البلحوح من عند الياس السبوعي جرب تحصل الكريدي لااا لااا لااا</h1>
-  <ProductsList :products="products"/>
+  <h1>زيت زيتونة من عند الياس السبوعي جرب تحصل الكريدي لااا لااا لااا</h1>
+  <ProductsList :products="products" />
 </template>
 
 <script>

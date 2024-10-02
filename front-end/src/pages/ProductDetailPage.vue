@@ -30,10 +30,8 @@ export default {
       cartItems: [],
     }
   },
-  computed: {
-    itemIsInCart() {
-      return this.cartItems.some(item => item.id === this.$route.params.productId);
-    }
+  components: {
+    NotFoundPage
   },
   watch: {
     async user(newUserValue) {
@@ -42,6 +40,11 @@ export default {
         const cartItems = cartResponse.data;
         this.cartItems = cartItems;
       }
+    }
+  },
+  computed: {
+    itemIsInCart() {
+      return this.cartItems.some(item => item.id === this.$route.params.productId);
     }
   },
   methods: {
@@ -60,9 +63,6 @@ export default {
       alert('A login link was sent to the email you provided');
       window.localStorage.setItem('emailForSignIn', email);
     }
-  },
-  components: {
-    NotFoundPage
   },
   async created() {
     const auth = getAuth();
